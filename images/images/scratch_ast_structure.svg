@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 580" width="100%" height="100%">
+  <defs>
+    <style>
+      .title { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-weight: 800; font-size: 22px; fill: #1e293b; }
+      .subtitle { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-size: 13px; fill: #64748b; }
+      .card-title { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 14px; fill: #334155; }
+      .code-text { font-family: 'Cascadia Code', 'Consolas', 'Fira Code', monospace; font-size: 12px; fill: #cbd5e1; }
+      .code-key { fill: #38bdf8; font-weight: 600; }
+      .code-str { fill: #fde047; }
+      .code-num { fill: #f472b6; }
+      .code-op { fill: #4ade80; font-weight: bold; }
+      .node-text { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 13px; fill: #ffffff; text-anchor: middle; }
+      .node-sub { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-size: 11px; fill: #ffffff; text-anchor: middle; opacity: 0.9; }
+      .badge-text { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .desc-text { font-family: 'Segoe UI', 'Noto Sans KR', sans-serif; font-size: 12px; fill: #475569; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08" />
+    </filter>
+    <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="130%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff8c1a" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="940" height="580" rx="16" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Top Header Section -->
+  <g transform="translate(40, 32)">
+    <rect x="0" y="2" width="6" height="36" rx="3" fill="#ff8c1a" />
+    <text x="18" y="20" class="title">Scratch 2.0 JSON 블록 트리 구조 분석도</text>
+    <text x="18" y="38" class="subtitle">.sb2 압축 해제 후 project.json 내 scripts 배열이 AST(추상 구문 트리)로 매핑되는 계층 구조</text>
+  </g>
+
+  <!-- Left: Raw JSON Representation Card -->
+  <g transform="translate(40, 88)" filter="url(#shadow)">
+    <!-- Card Outer -->
+    <rect width="370" height="450" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <!-- Card Header -->
+    <path d="M 0 12 Q 0 0 12 0 L 358 0 Q 370 0 370 12 L 370 38 L 0 38 Z" fill="#0f172a"/>
+    <circle cx="18" cy="19" r="5" fill="#ef4444" />
+    <circle cx="34" cy="19" r="5" fill="#f59e0b" />
+    <circle cx="50" cy="19" r="5" fill="#10b981" />
+    <text x="70" y="23" font-family="'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#94a3b8">project.json (scripts fragment)</text>
+
+    <!-- Code Block -->
+    <g transform="translate(20, 56)">
+      <text x="0" y="16" class="code-text"><tspan class="code-key">"scripts"</tspan>: [</text>
+      <text x="16" y="36" class="code-text">[</text>
+      <text x="32" y="56" class="code-text"><tspan class="code-num">120</tspan>, <tspan class="code-num">80</tspan>, <tspan fill="#64748b">// (x, y) 좌표 (정규화 시 제거)</tspan></text>
+      <text x="32" y="76" class="code-text">[</text>
+      <text x="48" y="96" class="code-text">[</text>
+      <text x="64" y="116" class="code-text"><tspan class="code-str">"setVar:to:"</tspan>, <tspan fill="#64748b">// [Opcode: 변수설정]</tspan></text>
+      <text x="64" y="136" class="code-text"><tspan class="code-str">"점수"</tspan>,        <tspan fill="#64748b">// Target Variable</tspan></text>
+      <text x="64" y="156" class="code-text">[</text>
+      <text x="80" y="176" class="code-text"><tspan class="code-op">"+"</tspan>,          <tspan fill="#64748b">// [Opcode: 덧셈연산]</tspan></text>
+      <text x="80" y="196" class="code-text">[<tspan class="code-str">"readVariable"</tspan>, <tspan class="code-str">"점수"</tspan>],</text>
+      <text x="80" y="216" class="code-text"><tspan class="code-num">1</tspan>            <tspan fill="#64748b">// Literal Value</tspan></text>
+      <text x="64" y="236" class="code-text">]</text>
+      <text x="48" y="256" class="code-text">],</text>
+      <text x="48" y="276" class="code-text">[<tspan class="code-str">"forward:"</tspan>, <tspan class="code-num">10</tspan>] <tspan fill="#64748b">// 10만큼 움직이기</tspan></text>
+      <text x="32" y="296" class="code-text">]</text>
+      <text x="16" y="316" class="code-text">]</text>
+      <text x="0" y="336" class="code-text">]</text>
+    </g>
+
+    <!-- Bottom note in card -->
+    <rect x="16" y="405" width="338" height="30" rx="6" fill="#0f172a" stroke="#334155"/>
+    <text x="26" y="424" font-family="'Segoe UI', sans-serif" font-size="11" fill="#38bdf8">💡 중첩 리스트 = 전위 표기식(Prefix) 기반 AST 구조</text>
+  </g>
+
+  <!-- Right: AST Tree Visualization Card -->
+  <g transform="translate(430, 88)" filter="url(#shadow)">
+    <!-- Card Outer -->
+    <rect width="470" height="450" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <!-- Card Header -->
+    <path d="M 0 12 Q 0 0 12 0 L 458 0 Q 470 0 470 12 L 470 38 L 0 38 Z" fill="#f8fafc"/>
+    <line x1="0" y1="38" x2="470" y2="38" stroke="#e2e8f0" stroke-width="1" />
+    <text x="20" y="24" class="card-title">구문 분석 트리 (Abstract Syntax Tree)</text>
+
+    <!-- Connectors (Lines) -->
+    <!-- Root to Var & Op -->
+    <path d="M 235 90 L 130 145" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 3"/>
+    <path d="M 235 90 L 330 145" stroke="#94a3b8" stroke-width="2"/>
+
+    <!-- Op (+) to ReadVar & Literal -->
+    <path d="M 330 195 L 255 250" stroke="#94a3b8" stroke-width="2"/>
+    <path d="M 330 195 L 395 250" stroke="#94a3b8" stroke-width="2"/>
+
+    <!-- ReadVar to Var Name -->
+    <path d="M 255 295 L 255 330" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3 3"/>
+
+    <!-- TREE NODES -->
+
+    <!-- Level 1: Root Node (setVar:to:) -->
+    <g transform="translate(145, 52)" filter="url(#nodeShadow)">
+      <rect width="180" height="46" rx="10" fill="#ff8c1a" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="90" y="21" class="node-text">setVar:to:</text>
+      <text x="90" y="37" class="node-sub">cmd-data (변수 지정 명령)</text>
+    </g>
+
+    <!-- Level 2 - Left: Target Variable -->
+    <g transform="translate(60, 138)" filter="url(#nodeShadow)">
+      <rect width="130" height="40" rx="20" fill="#fff7ed" stroke="#fdba74" stroke-width="1.5"/>
+      <text x="65" y="20" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="12" fill="#c2410c" text-anchor="middle">Arg 1: 대상 변수</text>
+      <text x="65" y="34" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" fill="#ea580c" text-anchor="middle">"점수"</text>
+    </g>
+
+    <!-- Level 2 - Right: Operator (+) -->
+    <g transform="translate(255, 138)" filter="url(#nodeShadow)">
+      <rect width="150" height="46" rx="10" fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="75" y="21" class="node-text">연산자: "+"</text>
+      <text x="75" y="37" class="node-sub">cmd-operators (수식)</text>
+    </g>
+
+    <!-- Level 3 - Left: readVariable -->
+    <g transform="translate(180, 245)" filter="url(#nodeShadow)">
+      <rect width="150" height="44" rx="10" fill="#ff8c1a" stroke="#ea580c" stroke-width="1.5"/>
+      <text x="75" y="20" class="node-text">readVariable</text>
+      <text x="75" y="35" class="node-sub">변수 값 참조</text>
+    </g>
+
+    <!-- Level 3 - Right: Literal Constant -->
+    <g transform="translate(345, 245)" filter="url(#nodeShadow)">
+      <rect width="100" height="44" rx="22" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="50" y="20" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="11" fill="#475569" text-anchor="middle">Literal Constant</text>
+      <text x="50" y="36" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="14" fill="#0f172a" text-anchor="middle">1</text>
+    </g>
+
+    <!-- Level 4: readVariable Arg -->
+    <g transform="translate(195, 330)">
+      <rect width="120" height="30" rx="15" fill="#ffedd5" stroke="#f97316" stroke-width="1"/>
+      <text x="60" y="19" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="12" fill="#9a3412" text-anchor="middle">"점수"</text>
+    </g>
+
+    <!-- Bottom Translated UI Block Result Preview -->
+    <g transform="translate(20, 380)">
+      <rect width="430" height="55" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="14" y="20" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="700" fill="#64748b">HTML 렌더링 변환 결과 (interpret_block):</text>
+      
+      <!-- Scratch Block Visual Pill -->
+      <g transform="translate(14, 26)">
+        <rect width="250" height="24" rx="12" fill="#ff8c1a" />
+        <text x="12" y="16" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="700" fill="#ffffff">점수 를</text>
+        
+        <!-- Nested Operator Block -->
+        <g transform="translate(60, 2)">
+          <rect width="112" height="20" rx="10" fill="#22c55e" />
+          <text x="8" y="14" font-family="'Noto Sans KR', sans-serif" font-size="10" font-weight="700" fill="#ffffff">점수 +</text>
+          <rect x="80" y="2" width="22" height="16" rx="8" fill="#ffffff" />
+          <text x="91" y="14" font-family="'Segoe UI', sans-serif" font-size="10" font-weight="800" fill="#000000" text-anchor="middle">1</text>
+        </g>
+        
+        <text x="180" y="16" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="700" fill="#ffffff">으로 정하기</text>
+      </g>
+      <text x="278" y="42" font-family="'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#059669">✓ 동등성 비교 단위</text>
+    </g>
+  </g>
+</svg>

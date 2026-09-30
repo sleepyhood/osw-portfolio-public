@@ -1,4 +1,4 @@
-﻿# 오승원 Software Engineer Portfolio
+# 오승원 Software Engineer Portfolio
 
 실제 업무 자동화, 백엔드 API, 데이터 파이프라인, 클라우드 배포 경험을 정리한 공개 포트폴리오입니다.
 
