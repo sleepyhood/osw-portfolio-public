@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오승원 포트폴리오 | Software Engineer</title>
+
+  <!-- Google Material Symbols (Rounded) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- Pretendard WebFont -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <style>
+    /* ─── Design Tokens (2026.09 Linear Aesthetic) ────── */
+    :root {
+      --bg:           #f4f4f5; /* Neutral Zinc background */
+      --surface:      #ffffff;
+      --surface-subtle: #fafafa;
+      --surface-elevated: #ffffff;
+      --border:       #e4e4e7; /* 1px Hairline Border (Zinc 200) */
+      --border-subtle: #f4f4f5;
+      --border-focus: #18181b;
+
+      --ink-primary:  #09090b; /* Zinc 950 */
+      --ink-secondary:#52525b; /* Zinc 600 */
+      --ink-muted:    #71717a; /* Zinc 500 */
+      --ink-faint:    #a1a1aa; /* Zinc 400 */
+
+      --accent:       #2563eb; /* Crisp Electric Blue */
+      --accent-subtle:#eff6ff;
+      --accent-border:#bfdbfe;
+      --accent-text:  #1d4ed8;
+
+      --green-accent: #059669;
+      --green-bg:     #ecfdf5;
+      --green-border: #a7f3d0;
+
+      --shadow-sm:    0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md:    0 4px 12px -2px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-slide: 0 24px 48px -12px rgba(0, 0, 0, 0.08), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+
+      --radius-sm:    6px;
+      --radius-md:    10px;
+      --radius-lg:    14px;
+    }
+
+    /* ─── Reset & Base ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--ink-secondary);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+
+    /* ─── Material Icon Helper ─────────────────────── */
+    .mi {
+      font-family: 'Material Symbols Rounded';
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 1;
+      vertical-align: -2.5px;
+      letter-spacing: normal;
+      text-transform: none;
+      white-space: nowrap;
+      word-wrap: normal;
+      -webkit-font-feature-settings: 'liga';
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      color: var(--ink-primary);
+      margin-right: 5px;
+    }
+    .mi.sm { font-size: 14.5px; vertical-align: -2px; }
+    .mi.muted { color: var(--ink-faint); }
+    .mi.accent { color: var(--accent); }
+
+    /* ─── GitHub Icon (Inline SVG) ──────────────────── */
+    .gh-icon {
+      display: inline-block;
+      width: 13px; height: 13px;
+      vertical-align: -2px;
+      margin-right: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Screen Viewer ─────────────────────────────── */
+    @media screen {
+      .toolbar {
+        position: fixed; top: 16px; right: 20px; z-index: 1000;
+        background: rgba(9, 9, 11, 0.9); backdrop-filter: blur(16px);
+        padding: 8px 18px; border-radius: 30px;
+        display: flex; align-items: center; gap: 14px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .toolbar span { color: #d4d4d8; font-size: 12.5px; font-weight: 500; }
+      .toolbar .tip {
+        color: #93c5fd; font-size: 11.5px; font-weight: 600;
+        background: rgba(37, 99, 235, 0.2); padding: 3px 9px; border-radius: 12px;
+      }
+      .toolbar button {
+        background: #ffffff; color: #09090b; border: none;
+        padding: 7px 15px; border-radius: 20px; font-size: 12.5px;
+        font-weight: 700; cursor: pointer; transition: all .15s ease;
+        display: flex; align-items: center; gap: 5px;
+        font-family: inherit;
+      }
+      .toolbar button:hover { background: #f4f4f5; transform: translateY(-1px); }
+      .slides-wrap {
+        display: flex; flex-direction: column; align-items: center;
+        gap: 32px; padding: 72px 20px 80px;
+      }
+      .slide {
+        width: 1280px;
+        height: 720px;
+        min-height: 720px;
+        max-height: 720px;
+        background: var(--surface); border-radius: var(--radius-lg); overflow: hidden;
+        box-shadow: var(--shadow-slide);
+        border: 1px solid var(--border);
+        padding: 36px 48px 24px 48px;
+        display: flex; flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+      }
+    }
+
+    /* ─── Print / PDF (1280×720 1:1 무결성) ─────────── */
+    @media print {
+      @page {
+        size: 1280px 720px;
+        margin: 0;
+      }
+      html, body {
+        width: 1280px;
+        height: 720px;
+        background: #fff;
+        margin: 0; padding: 0;
+      }
+      .toolbar { display: none !important; }
+      .slides-wrap {
+        display: block;
+        padding: 0; margin: 0;
+      }
+      .slide {
+        width: 1280px;
+        height: 720px;
+        min-height: 720px;
+        max-height: 720px;
+        padding: 36px 48px 24px 48px;
+        page-break-after: always;
+        break-after: page;
+        page-break-inside: avoid;
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+    }
+
+    /* ─── Slide Header ──────────────────────────────── */
+    .slide-hd { margin-bottom: 12px; flex-shrink: 0; }
+    .slide-title {
+      display: flex; align-items: baseline; justify-content: space-between;
+      border-bottom: 1px solid var(--border); padding-bottom: 9px; gap: 10px;
+    }
+    .slide-title .main {
+      font-size: 21px; font-weight: 800; color: var(--ink-primary);
+      letter-spacing: -0.025em;
+    }
+    .slide-sub {
+      font-size: 12.5px; font-weight: 500; color: var(--ink-muted);
+    }
+
+    /* ─── Tags & Repo Link (Linear Minimal) ─────────── */
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; align-items: center; }
+    .tag {
+      background: var(--surface-subtle); color: var(--ink-secondary);
+      border: 1px solid var(--border);
+      font-size: 11px; font-weight: 600;
+      padding: 2px 7px; border-radius: var(--radius-sm);
+      letter-spacing: -0.01em;
+    }
+    .tag.highlight {
+      background: var(--accent-subtle); color: var(--accent-text); border-color: var(--accent-border);
+    }
+    .tag.status {
+      background: var(--green-bg); color: var(--green-accent); border-color: var(--green-border);
+    }
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: var(--surface);
+      color: var(--ink-primary);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.12s ease;
+      vertical-align: middle;
+    }
+    .repo-link:hover {
+      border-color: var(--ink-primary);
+      background: var(--surface-subtle);
+    }
+
+    /* ─── Linear Bento Stat Strip ───────────────────── */
+    .stat-strip {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .stat-card {
+      flex: 1;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .stat-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .stat-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+    .stat-desc {
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+      font-weight: 500;
+    }
+    .stat-val {
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--ink-primary);
+      letter-spacing: -0.03em;
+      font-feature-settings: "tnum";
+      white-space: nowrap;
+    }
+    .stat-val.accent { color: var(--accent); }
+    .stat-val.green { color: var(--green-accent); }
+
+    /* ─── Grid layouts ──────────────────────────────── */
+    .slide-body {
+      flex: 1;
+      display: grid;
+      gap: 24px;
+      align-items: stretch;
+      min-height: 0;
+    }
+    .g-split { grid-template-columns: 1.15fr 0.95fr; }
+    .g-portrait { grid-template-columns: 1.35fr 0.8fr; }
+    .g-landscape { grid-template-columns: 0.95fr 1.3fr; }
+    .g-equal { grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .content-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    /* ─── Section Blocks ────────────────────────────── */
+    .s-block { margin-bottom: 10px; }
+    .s-block:last-child { margin-bottom: 0; }
+    .s-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--ink-primary);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .s-body {
+      font-size: 13.2px;
+      color: var(--ink-secondary);
+      line-height: 1.6;
+    }
+    .s-body ul { padding-left: 17px; margin-top: 2px; }
+    .s-body li { margin-bottom: 5px; }
+    .s-body li:last-child { margin-bottom: 0; }
+    .s-body b { color: var(--ink-primary); font-weight: 700; }
+
+    /* ─── Linear Cards ──────────────────────────────── */
+    .card {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ─── Linear Minimal Workflow (파이프라인) ───────── */
+    .workflow {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 7px 10px;
+      margin: 8px 0 12px;
+      gap: 6px;
+    }
+    .wf-step {
+      flex: 1;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 5px 8px;
+      text-align: center;
+    }
+    .wf-step-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink-primary);
+      white-space: nowrap;
+    }
+    .wf-step-sub {
+      font-size: 9.5px;
+      color: var(--ink-muted);
+      margin-top: 1px;
+      white-space: nowrap;
+    }
+    .wf-arrow {
+      font-size: 11px;
+      color: var(--ink-faint);
+      flex-shrink: 0;
+    }
+
+    /* ─── Frame Container (Window Mockup) ───────────── */
+    .window-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .window-header {
+      background: var(--surface-subtle);
+      border-bottom: 1px solid var(--border);
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .window-dots {
+      display: flex;
+      gap: 4.5px;
+    }
+    .window-dot {
+      width: 7.5px; height: 7.5px; border-radius: 50%;
+      background: #e4e4e7;
+    }
+    .window-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+    .window-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
+      padding: 10px;
+      position: relative;
+    }
+    .window-body img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .window-footer {
+      padding: 6px 12px;
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      font-size: 11px;
+      color: var(--ink-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .window-footer b { color: var(--ink-primary); font-weight: 600; }
+
+    /* ─── Face Privacy Result Comparison ───────────────── */
+    .face-result-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .face-result-card {
+      margin: 0;
+      padding: 5px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .face-result-card img {
+      display: block;
+      width: 100%;
+      height: 145px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: 4px;
+    }
+    .face-result-card figcaption {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-top: 5px;
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .face-result-card figcaption b { color: var(--ink-primary); }
+    .face-result-card figcaption span { color: var(--ink-muted); }
+
+    /* ─── Terminal PiP Overlay (Slide 2 전용: 실제 콘솔 캡처 증적) ─── */
+    .terminal-pip {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 360px;
+      background: #18181b;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 20px 40px -4px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+    .terminal-pip-header {
+      background: #27272a;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .terminal-pip-title {
+      font-size: 10px;
+      color: #d4d4d8;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .terminal-pip-body {
+      background: #18181b;
+      padding: 0;
+      line-height: 0;
+    }
+    .terminal-pip-body img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 0;
+    }
+    .terminal-pip-footer {
+      background: #27272a;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 4px 10px;
+      font-size: 10px;
+      color: #4ade80;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    /* ─── 2026 Linear & Toss Style Network Inspector (Slide 3 전용) ─── */
+    .timing-inspector {
+      background: #0f1218;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 9px 12px 8px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      margin-top: 8px;
+    }
+    .timing-inspector-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 6px;
+      margin-bottom: 7px;
+      font-size: 10px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .timing-header-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .timing-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+    .timing-hit-badge {
+      background: rgba(16, 185, 129, 0.12);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      padding: 1px 6px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .timing-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 10px;
+    }
+    .timing-row:last-child { margin-bottom: 0; }
+    .timing-label {
+      width: 125px;
+      white-space: nowrap;
+      color: #94a3b8;
+      font-size: 9.5px;
+      font-weight: 500;
+    }
+    .timing-bar-wrap {
+      flex: 1;
+      height: 13px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 3px;
+      margin: 0 8px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+    }
+    .timing-seg {
+      height: 100%;
+      position: relative;
+    }
+    .timing-seg.seg-tls {
+      background: #6366f1;
+      width: 5.3%;
+      border-right: 1px solid rgba(0, 0, 0, 0.25);
+    }
+    .timing-seg.seg-ttfb {
+      background: linear-gradient(90deg, #f59e0b, #ef4444);
+      width: 86.5%;
+      border-right: 1px solid rgba(0, 0, 0, 0.25);
+    }
+    .timing-seg.seg-dl {
+      background: #38bdf8;
+      width: 8.2%;
+    }
+    .timing-seg.seg-hit {
+      background: #10b981;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.7);
+      width: 2.2%;
+      min-width: 5px;
+      border-radius: 2px;
+    }
+    .timing-val {
+      width: 58px;
+      text-align: right;
+      font-weight: 700;
+      font-size: 10px;
+      color: #f1f5f9;
+      font-feature-settings: "tnum";
+      white-space: nowrap;
+    }
+    .timing-val.fast { color: #34d399; }
+    .timing-val.slow { color: #f87171; }
+
+    /* Toss-Style High Density Metric Rows */
+    .timing-metrics {
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .timing-metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 9.5px;
+      white-space: nowrap;
+    }
+    .timing-metric-key {
+      color: #94a3b8;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .timing-metric-val-group {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-feature-settings: "tnum";
+    }
+    .timing-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0px 5px;
+      border-radius: 4px;
+      font-size: 8.5px;
+      font-weight: 700;
+      line-height: 15px;
+      white-space: nowrap;
+    }
+    .timing-pill.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .timing-pill.blue {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* ─── Footer ────────────────────────────────────── */
+    .slide-ft {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 8px; border-top: 1px solid var(--border);
+      font-size: 11px; color: var(--ink-muted); margin-top: 8px; flex-shrink: 0;
+    }
+    .slide-ft-index {
+      font-weight: 700;
+      color: var(--ink-primary);
+      font-feature-settings: "tnum";
+    }
+
+    /* ─── Slide 1 전용 프로필 ──────────────────────── */
+    .profile-photo {
+      width: 170px; height: 170px; margin: 0 auto;
+      border-radius: var(--radius-md); overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+    .profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .exp-row {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4px; padding: 7px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .exp-row:last-child { border-bottom: none; }
+    .exp-company { font-size: 14px; font-weight: 700; color: var(--ink-primary); }
+    .exp-role { font-size: 12px; color: var(--ink-secondary); margin-top: 1px; }
+    .exp-period { font-size: 11.5px; color: var(--ink-muted); text-align: right; white-space: nowrap; font-feature-settings: "tnum"; }
+
+    .cert-row {
+      display: flex; align-items: baseline; gap: 8px;
+      font-size: 13px; padding: 5px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .cert-row:last-child { border-bottom: none; }
+    .cert-name { font-weight: 600; color: var(--ink-primary); flex: 1; }
+    .cert-date { font-size: 11.5px; color: var(--ink-muted); white-space: nowrap; font-feature-settings: "tnum"; }
+
+    /* ─── Linear Quote Banner ───────────────────────── */
+    .quote-banner {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--ink-primary);
+      border-radius: var(--radius-sm);
+      padding: 9px 14px;
+      font-size: 13.5px;
+      color: var(--ink-primary);
+      margin-bottom: 14px;
+      flex-shrink: 0;
+    }
+    .quote-banner b { font-weight: 700; }
+
+    /* ─── Keyboard Navigator Tooltip ────────────────── */
+    @media screen {
+      .nav-hint {
+        position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+        background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(12px);
+        color: #a1a1aa; font-size: 11px;
+        padding: 5px 14px; border-radius: 20px;
+        pointer-events: none;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .nav-hint kbd {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 3px;
+        padding: 1px 5px;
+        font-size: 10px;
+        color: #f4f4f5;
+        margin: 0 2px;
+      }
+    }
+    @media print { .nav-hint { display: none !important; } }
+  </style>
+</head>
+<body>
+
+  <!-- 화면 상단 제어 툴바 -->
+  <div class="toolbar">
+    <span>16:9 슬라이드 (1280 × 720)</span>
+    <span class="tip">인쇄 설정: [여백: 없음], [배경 그래픽: 체크]</span>
+    <button onclick="window.print()">
+      <span class="mi sm">print</span> PDF 저장
+    </button>
+  </div>
+
+  <!-- 키보드 네비게이션 힌트 -->
+  <div class="nav-hint"><kbd>←</kbd><kbd>→</kbd> 슬라이드 이동 (총 6페이지)</div>
+
+  <div class="slides-wrap">
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 1 · Profile & Identity
+         ═══════════════════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-hd">
+        <div style="font-size: 28px; font-weight: 900; color: var(--ink-primary); letter-spacing: -0.035em; line-height: 1.1;">
+          오승원
+          <span style="font-size: 17px; font-weight: 600; color: var(--accent); margin-left: 6px;">Software Engineer</span>
+        </div>
+        <div style="font-size: 14.5px; font-weight: 500; color: var(--ink-muted); margin-top: 3px;">
+          반복 수작업을 없애는 시스템 자동화 &amp; 백엔드 파이프라인 엔지니어
+        </div>
+      </div>
+
+      <div class="quote-banner">
+        <b>"한정된 자원에서도 병목 없는 연산 흐름을 설계하고, 현장의 반복 수작업을 자동화 도구로 직접 해결합니다."</b>
+      </div>
+
+      <div class="slide-body g-split">
+        <!-- Left: experience + education + links -->
+        <div class="content-col">
+          <!-- Experience -->
+          <div>
+            <div class="s-label"><span class="mi sm">work</span> 경력 사항 (Experience)</div>
+            <div class="exp-row">
+              <div>
+                <div class="exp-company">
+                  두잉창의코딩-청라
+                  <span class="tag status" style="margin-left:4px;">재직 중</span>
+                </div>
+                <div class="exp-role">
+                  전임 강사 · 인하우스 시스템 개발 (정규직)<br>
+                  <span style="font-size: 11.5px; color: var(--ink-muted);">알고리즘 지도(NYPC·KOI) · 사내 자동화 도구 개발 · AWS 강의 외주</span>
+                </div>
+              </div>
+              <div class="exp-period">2024.04 ~ 현재<br><span style="font-size:11px;color:var(--ink-faint);">약 1년 6개월</span></div>
+            </div>
+            <div class="exp-row">
+              <div>
+                <div class="exp-company">씨큐브코딩 화성동탄 <span class="tag" style="margin-left:4px;">계약직</span></div>
+                <div class="exp-role">
+                  코딩 강사<br>
+                  <span style="font-size: 11.5px; color: var(--ink-muted);">스크래치·아두이노·텍스트 코딩 지도 · 5개 커리큘럼 개설 및 운영</span>
+                </div>
+              </div>
+              <div class="exp-period">2021.12 ~ 2022.11<br><span style="font-size:11px;color:var(--ink-faint);">약 1년</span></div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div>
+            <div class="s-label"><span class="mi sm">school</span> 학력 (Education)</div>
+            <div class="s-body">
+              <div style="display:flex; justify-content: space-between; align-items: baseline; padding: 3px 0;">
+                <div>
+                  <b>고려대학교(세종)</b>
+                  <span style="font-size:12.5px; color:var(--ink-muted); margin-left:6px;">컴퓨터융합소프트웨어학과 · 공학학사</span>
+                </div>
+                <span style="font-size:12px; color:var(--ink-faint); white-space:nowrap;">2017.03 ~ 2024.02 졸업</span>
+              </div>
+              <div style="display:flex; justify-content: space-between; align-items: baseline; padding: 3px 0;">
+                <div>
+                  <span style="font-weight: 600; color:var(--ink-secondary);">등촌고등학교</span>
+                </div>
+                <span style="font-size:12px; color:var(--ink-faint); white-space:nowrap;">2014.03 ~ 2017.02 졸업</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div>
+            <div class="s-label"><span class="mi sm">link</span> Channels &amp; Profiles</div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px; font-size:12.5px;">
+              <a href="https://github.com/sleepyhood" target="_blank" class="repo-link">
+                <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>github.com/sleepyhood</a>
+              <a href="mailto:oseungwon67@gmail.com" class="repo-link"><span class="mi sm">mail</span>oseungwon67@gmail.com</a>
+              <a href="https://solved.ac/smartosw" target="_blank" class="repo-link"><span class="mi sm">emoji_events</span>solved.ac/smartosw</a>
+              <a href="https://medium.com/@smartosw" target="_blank" class="repo-link"><span class="mi sm">article</span>medium.com/@smartosw</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: photo + skills + badge -->
+        <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 12px;">
+          <div style="display:flex; justify-content:center;">
+            <div class="profile-photo">
+              <img src="images/오승원.jpg" alt="오승원 프로필 사진">
+            </div>
+          </div>
+
+          <div class="card" style="padding: 12px 14px;">
+            <div class="s-label" style="margin-bottom: 4px;"><span class="mi sm">build</span> Core Tech Stack</div>
+            <div class="s-body" style="font-size:12.5px; line-height:1.7;">
+              <div><b>Languages:</b> C++, Python, C#, JavaScript, C</div>
+              <div><b>Backend &amp; Auto:</b> Flask, FastAPI, Google Apps Script, Docker</div>
+              <div><b>Data &amp; Media:</b> OpenCV, WebRTC, MySQL, SQLite, Pandas</div>
+              <div><b>Cloud:</b> AWS (EC2, S3, RDS, IAM, VPC)</div>
+            </div>
+          </div>
+
+          <div style="text-align:center;">
+            <img src="http://mazassumnida.wtf/api/v2/generate_badge?boj=smartosw" alt="Solved.ac" style="max-height:80px; border-radius:6px; border:1px solid var(--border);">
+            <div style="font-size:11px; color:var(--ink-faint); margin-top:3px;">Solved.ac 알고리즘 트레이닝 실시간 인증</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ft">
+        <span>Seungwon Oh · Software Engineer Portfolio</span>
+        <span class="slide-ft-index">1 / 6</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 2 · Project 1: 학습 진도율 시각화 대시보드 (Flask)
+         ═══════════════════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-hd">
+        <div class="slide-title">
+          <span class="main">01. 학생 학습 진도율 시각화 &amp; 데이터 파이프라인</span>
+          <span class="slide-sub">두잉창의코딩-청라 · 인하우스 서비스 개발 · 2025.07 ~ 현재</span>
+        </div>
+        <div class="tags">
+          <span class="tag highlight">Flask</span>
+          <span class="tag">REST API</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">SQLite</span>
+          <span class="tag status">프로덕션 운영 중</span>
+          <a href="https://github.com/sleepyhood/learning-tracker-showcase" target="_blank" class="repo-link">
+            <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub Repository</a>
+        </div>
+      </div>
+
+      <!-- Linear Stat Strip -->
+      <div class="stat-strip">
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Data Accuracy</span>
+            <span class="stat-desc">수작업 파싱 오류 방지</span>
+          </div>
+          <span class="stat-val green">100%</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Coverage</span>
+            <span class="stat-desc">원생 진도·숙제 통합</span>
+          </div>
+          <span class="stat-val">수백 명 규모</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Adoption</span>
+            <span class="stat-desc">원내 강사진 실무 활용</span>
+          </div>
+          <span class="stat-val accent">전면 도입</span>
+        </div>
+      </div>
+
+      <div class="slide-body g-landscape">
+        <!-- Left: Engineering Explanation -->
+        <div class="content-col">
+          <div>
+            <!-- Minimal Workflow -->
+            <div class="workflow">
+              <div class="wf-step">
+                <div class="wf-step-title">외부 플랫폼</div>
+                <div class="wf-step-sub">분산 웹 데이터</div>
+              </div>
+              <div class="wf-arrow">→</div>
+              <div class="wf-step">
+                <div class="wf-step-title">Flask Pipeline</div>
+                <div class="wf-step-sub">스키마 정규화</div>
+              </div>
+              <div class="wf-arrow">→</div>
+              <div class="wf-step">
+                <div class="wf-step-title">MySQL / SQLite</div>
+                <div class="wf-step-sub">단위 테스트 검증</div>
+              </div>
+              <div class="wf-arrow">→</div>
+              <div class="wf-step" style="border-color:var(--accent-border); background:var(--accent-subtle);">
+                <div class="wf-step-title" style="color:var(--accent-text);">대시보드 UI</div>
+                <div class="wf-step-sub">실시간 진도 모니터링</div>
+              </div>
+            </div>
+
+            <div class="s-block">
+              <div class="s-label"><span class="mi sm">error</span> 배경 및 난제 (Challenge)</div>
+              <div class="s-body">
+                외부 플랫폼에 분산된 수백 명의 진도율과 과제 데이터를 엑셀로 일일이 취합하던 중, 비정형 웹 JSON 스키마 변동으로 인한 파싱 누락 및 데이터 오염이 빈번히 발생했습니다.
+              </div>
+            </div>
+
+            <div class="s-block">
+              <div class="s-label"><span class="mi sm">terminal</span> 엔지니어링 해결책 (Solution)</div>
+              <div class="s-body">
+                <ul>
+                  <li><b>파이프라인 구축:</b> Flask REST API를 설계해 비정형 웹 데이터를 규격화하고 DB 정규화 테이블에 적재</li>
+                  <li><b>테스트 주도 무결성 검증:</b> 스키마 변경 시 발생할 수 있는 결측치와 엣지 케이스를 방어하는 <b>단위 테스트 코드를 직접 작성</b>하여 100% 데이터 정합성 보장</li>
+                  <li><b>주간 대시보드:</b> 학생별 주간 학습 진도율 시각화 및 숙제 달성도 실시간 모니터링 UI 구축</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 10px 14px; background:var(--surface);">
+            <div class="s-body" style="font-size: 12.5px;">
+              <b>현장 임팩트:</b> 수작업 집계 병목을 완전히 제거하여 강사진의 주간 관리 업무를 자동화하고, 학부모 상담 시 실시간 정량 지표 제공
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Wide Landscape Mockup -->
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots">
+              <div class="window-dot"></div>
+              <div class="window-dot"></div>
+              <div class="window-dot"></div>
+            </div>
+            <span class="window-title">learning-tracker-dashboard.app</span>
+            <span style="font-size:10.5px; color:var(--green-accent); font-weight:600;">● Live 1.3ms</span>
+          </div>
+          <div class="window-body">
+            <img src="images/learning_tracker_dashboard.png" alt="학습 진도율 시각화 대시보드" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'500\' height=\'320\' viewBox=\'0 0 500 320\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23fafafa\'/><text x=\'50%25\' y=\'45%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2371717a\' font-size=\'14\' font-weight=\'bold\' font-family=\'sans-serif\'>진도율 대시보드 UI (와이드 뷰)</text><text x=\'50%25\' y=\'56%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23a1a1aa\' font-size=\'11\' font-family=\'sans-serif\'>images/learning_tracker_dashboard.png</text></svg>';">
+
+            <!-- Terminal PiP Overlay (실제 콘솔 검증 증적 캡처) -->
+            <div class="terminal-pip">
+              <div class="terminal-pip-header">
+                <span class="terminal-pip-title">cmd.exe — python verify_benchmark.py</span>
+                <span style="display:flex;gap:3.5px;"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;"></span><span style="width:6px;height:6px;border-radius:50%;background:#eab308;"></span><span style="width:6px;height:6px;border-radius:50%;background:#22c55e;"></span></span>
+              </div>
+              <div class="terminal-pip-body">
+                <img src="images/terminal_benchmark.png" alt="실제 콘솔 검증 증적" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'360\' height=\'200\' viewBox=\'0 0 360 200\'><rect width=\'100%25\' height=\'100%25\' fill=\'%2318181b\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%234ade80\' font-size=\'12\' font-family=\'monospace\'>images/terminal_benchmark.png</text></svg>';">
+              </div>
+              <div class="terminal-pip-footer">
+                <span>✓ 32 passed (0.38s)</span>
+                <span>Latency: 0.31ms (11,109x↑)</span>
+              </div>
+            </div>
+          </div>
+          <div class="window-footer">
+            <span>Flask 기반 진도율 대시보드 메인 화면</span>
+            <b>단위 테스트 &amp; 6중 매핑 엔진 검증 완료</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ft">
+        <span>두잉창의코딩-청라 · 인하우스 서비스 개발</span>
+        <span class="slide-ft-index">2 / 6</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 3 · Project 2: AI 알림장 자동화 사이드바 (GAS)
+         ═══════════════════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-hd">
+        <div class="slide-title">
+          <span class="main">02. Gemini 기반 실시간 AI 알림장 자동화 사이드바</span>
+          <span class="slide-sub">두잉창의코딩-청라 · 인하우스 서비스 개발 · 2025.07 ~ 현재</span>
+        </div>
+        <div class="tags">
+          <span class="tag highlight">Google Apps Script</span>
+          <span class="tag highlight">Gemini 2.5 API</span>
+          <span class="tag">CacheService</span>
+          <span class="tag status">실무 전원 사용</span>
+          <a href="https://github.com/sleepyhood/smart-docs-sidebar" target="_blank" class="repo-link">
+            <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub Repository</a>
+        </div>
+      </div>
+
+      <!-- Linear Stat Strip -->
+      <div class="stat-strip">
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Time Reduced</span>
+            <span class="stat-desc">피드백 작성 소요 시간</span>
+          </div>
+          <span class="stat-val accent">40분 → 3분 (92%↓)</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Cache Speed</span>
+            <span class="stat-desc">출석부 40명 동기화</span>
+          </div>
+          <span class="stat-val green">1초</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Generation</span>
+            <span class="stat-desc">Gemini 2.5 맞춤 문안</span>
+          </div>
+          <span class="stat-val">즉시 생성 (1s)</span>
+        </div>
+      </div>
+
+      <div class="slide-body g-portrait">
+        <!-- Left: System Details -->
+        <div class="content-col">
+          <div>
+            <!-- Minimal Workflow -->
+            <div class="workflow">
+              <div class="wf-step">
+                <div class="wf-step-title">포탈 API</div>
+                <div class="wf-step-sub">학생 출결/커리큘럼</div>
+              </div>
+              <div class="wf-arrow">→</div>
+              <div class="wf-step" style="border-color:var(--border-focus);">
+                <div class="wf-step-title">CacheService</div>
+                <div class="wf-step-sub">15분 캐싱 (1s 로드)</div>
+              </div>
+              <div class="wf-arrow">→</div>
+              <div class="wf-step">
+                <div class="wf-step-title">Gemini 2.5</div>
+                <div class="wf-step-sub">규격화 프롬프트</div>
+              </div>
+              <div class="wf-arrow">→</div>
+              <div class="wf-step" style="border-color:var(--accent-border); background:var(--accent-subtle);">
+                <div class="wf-step-title" style="color:var(--accent-text);">구글 문서</div>
+                <div class="wf-step-sub">원클릭 피드백 완성</div>
+              </div>
+            </div>
+
+            <div class="s-block">
+              <div class="s-label"><span class="mi sm">error</span> 배경 및 현장 병목 (Bottleneck)</div>
+              <div class="s-body">
+                수업 종료 직후 매번 40여 명의 출결 확인, 수업 일지 타이핑, 개별 맞춤 알림장 작성에 강사진의 40분 이상이 반복 수작업으로 소모되어 퇴근 지연 및 오타 위험이 컸습니다.
+              </div>
+            </div>
+
+            <div class="s-block">
+              <div class="s-label"><span class="mi sm">terminal</span> 핵심 아키텍처 구현 (Implementation)</div>
+              <div class="s-body">
+                <ul>
+                  <li><b>15분 스마트 캐싱 레이어:</b> Google Apps Script의 <code>CacheService</code>를 활용해 중복 포탈 API 호출 부하를 차단하고 40명 출석부를 <b>1초 만에 즉시 로드</b></li>
+                  <li><b>Gemini 2.5 LLM 프롬프트 파이프라인:</b> 스크래치, 교재, 알고리즘(OJ) 등 3대 커리큘럼 성취도 데이터를 JSON 파이프라인으로 구조화하여 <b>학생별 알림장 문안을 1초 만에 자동 생성</b></li>
+                  <li><b>보안 격리 설계:</b> Script Properties 기반 환경변수 분리로 API Key 등 시크릿 자격증명을 완전 격리</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 10px 14px; background:var(--surface);">
+            <div class="s-body" style="font-size: 12.5px;">
+              <b>운영 결과:</b> 현장 강사진 전원 실무 도입 완료. 수업 종료 후 <b>3분 만에 40명 피드백 발송 완료</b> 및 오발송 오차율 0% 달성
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 2-Column Suite (Sidebar Mockup + Timing Inspector) -->
+        <div style="display:flex; flex-direction:column; justify-content:space-between; height:100%; min-height:0;">
+          <!-- Sidebar Window Frame -->
+          <div class="window-frame" style="flex:1; min-height:0;">
+            <div class="window-header">
+              <div class="window-dots">
+                <div class="window-dot"></div>
+                <div class="window-dot"></div>
+                <div class="window-dot"></div>
+              </div>
+              <span class="window-title">Google Docs Sidebar · Smart Attendance</span>
+              <span style="font-size:10.5px; color:var(--green-accent); font-weight:600;">● Active 15m Cache</span>
+            </div>
+            <div class="window-body" style="padding: 4px; background:#ffffff;">
+              <img src="images/smart_docs_sidebar.png" alt="구글 문서 AI 알림장 사이드바" style="max-height: 290px; width:auto;" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#71717a;font-size:12px;text-align:center;gap:6px;padding:20px;\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><line x1=\'15\' y1=\'3\' x2=\'15\' y2=\'21\'/></svg><b>AI 알림장 사이드바 UI</b><span style=\'font-size:11px;color:#a1a1aa;\'>images/smart_docs_sidebar.png</span></div>';">
+            </div>
+            <div class="window-footer">
+              <span>Google Workspace 확장 도구</span>
+              <b>40명 출석부 &amp; 3대 커리큘럼 연동</b>
+            </div>
+          </div>
+
+          <!-- 2026 Linear & Toss Style Network Inspector (PortalService.js 팩트 반영) -->
+          <div class="timing-inspector">
+            <div class="timing-inspector-header">
+              <div class="timing-header-left">
+                <span class="timing-pulse-dot"></span>
+                <span>NETWORK INSPECTOR</span>
+                <span style="color:#64748b; font-weight:400;">· PortalService.js</span>
+              </div>
+              <span class="timing-hit-badge">CACHE HIT 96.2%</span>
+            </div>
+            <div class="timing-row">
+              <span class="timing-label">Direct Fetch (Miss)</span>
+              <div class="timing-bar-wrap" title="TLS: 130ms | TTFB: 2,120ms | Transfer: 200ms">
+                <div class="timing-seg seg-tls" style="width: 5.3%;"></div>
+                <div class="timing-seg seg-ttfb" style="width: 86.5%;"></div>
+                <div class="timing-seg seg-dl" style="width: 8.2%;"></div>
+              </div>
+              <span class="timing-val slow">2,450 ms</span>
+            </div>
+            <div class="timing-row">
+              <span class="timing-label">Memory Cache (Hit)</span>
+              <div class="timing-bar-wrap" title="Cache Read: 38ms">
+                <div class="timing-seg seg-hit"></div>
+              </div>
+              <span class="timing-val fast">38 ms</span>
+            </div>
+            <div class="timing-metrics">
+              <div class="timing-metric-row">
+                <span class="timing-metric-key">Latency Optimization</span>
+                <div class="timing-metric-val-group">
+                  <span style="color:#f1f5f9; font-weight:700;">-2,412ms</span>
+                  <span class="timing-pill green">98.4% Faster</span>
+                </div>
+              </div>
+              <div class="timing-metric-row">
+                <span class="timing-metric-key">Dual-Key Failover</span>
+                <div class="timing-metric-val-group">
+                  <span style="color:#38bdf8; font-weight:700;">0.1s Zero-Wait</span>
+                  <span class="timing-pill blue">429 Defense</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ft">
+        <span>두잉창의코딩-청라 · 인하우스 서비스 개발</span>
+        <span class="slide-ft-index">3 / 6</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 4 · Project 3: Scratch2 AST 자동 채점기
+         ═══════════════════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-hd">
+        <div class="slide-title">
+          <span class="main">03. Scratch2 AST 자동 채점 엔진 &amp; 모의고사 환경 구축</span>
+          <span class="slide-sub">두잉창의코딩-청라 · 인하우스 서비스 개발 · 2025.07 ~ 현재</span>
+        </div>
+        <div class="tags">
+          <span class="tag highlight">Python</span>
+          <span class="tag">AST Parsing</span>
+          <span class="tag">정적 분석 (Static Analysis)</span>
+          <span class="tag">HTML Report</span>
+          <span class="tag status">정기 모의고사 도입</span>
+          <a href="https://github.com/sleepyhood/scratch_exam" target="_blank" class="repo-link">
+            <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub Repository</a>
+        </div>
+      </div>
+
+      <!-- Linear Stat Strip -->
+      <div class="stat-strip">
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Grading Time</span>
+            <span class="stat-desc">수백 명 수동 채점</span>
+          </div>
+          <span class="stat-val green">0초 자동화</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Consistency</span>
+            <span class="stat-desc">정적 분석 판별 정확도</span>
+          </div>
+          <span class="stat-val green">100%</span>
+        </div>
+        <div class="stat-card">
+          <div class="stat-meta">
+            <span class="stat-label">Scale</span>
+            <span class="stat-desc">학원 정기 평가 운영</span>
+          </div>
+          <span class="stat-val accent">전면 도입</span>
+        </div>
+      </div>
+
+      <div class="slide-body g-split">
+        <div class="content-col">
+          <div>
+            <div class="s-block">
+              <div class="s-label"><span class="mi sm">error</span> 직면한 문제 (Problem)</div>
+              <div class="s-body">
+                수백 명 학생의 블록 코딩 과제를 강사가 Scratch 환경을 일일이 실행하며 수동 채점하는 극심한 병목 발생. 과제 유형별 기준이 모호해 채점 오차와 일관성 부재 문제가 이어졌습니다.
+              </div>
+            </div>
+
+            <div class="s-block">
+              <div class="s-label"><span class="mi sm">terminal</span> 핵심 기술 구현 (Action)</div>
+              <div class="s-body">
+                <ul>
+                  <li><b>JSON 파싱 레이어:</b> Scratch2 프로젝트 파일(.sb3) ZIP 압축 해제 후 생성되는 복잡한 중첩 JSON 트리를 파싱</li>
+                  <li><b>AST 구성 및 순회:</b> 블록 간 연결 관계(이벤트 핸들러 → 제어 흐름 → 연산자)를 <b>추상 구문 트리(AST)</b> 형태로 재구성해 DFS 순회</li>
+                  <li><b>정적 검증 엔진:</b> 런타임 실행 없이 AST 순회만으로 이벤트 트리거, 조건문 분기, 변수 연산을 판별하는 정적 검증 엔진을 구현해 <b>100% 채점 일관성을 확보</b></li>
+                  <li><b>모의고사 환경:</b> 시험지 JSON 정의 파일 기준으로 학생 제출 코드를 자동 채점하여 결과 리포트(HTML) 즉시 생성</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="padding: 10px 14px; background:var(--surface);">
+            <div class="s-body" style="font-size: 12.5px;">
+              <b>운영 결과:</b> 학원 자체 교재와 연계한 정기 모의고사 채점에 전면 도입. 강사 채점 소요 시간 0 달성 및 채점 일관성 100% 보장
+            </div>
+          </div>
+        </div>
+
+        <!-- Window Frame Mockup -->
+        <div class="window-frame">
+          <div class="window-header">
+            <div class="window-dots">
+              <div class="window-dot"></div>
+              <div class="window-dot"></div>
+              <div class="window-dot"></div>
+            </div>
+            <span class="window-title">scratch_ast_structure.svg</span>
+            <span style="width: 30px;"></span>
+          </div>
+          <div class="window-body">
+            <img src="images/scratch_ast_structure.svg" alt="Scratch 채점 결과">
+          </div>
+          <div class="window-footer">
+            <span>Scratch JSON AST 트리 구조 분석도</span>
+            <b>정적 분석 엔진</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ft">
+        <span>두잉창의코딩-청라 · 인하우스 서비스 개발</span>
+        <span class="slide-ft-index">4 / 6</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 5 · Project 4 & 5: Engineering Deep-Dive
+         ═══════════════════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-hd">
+        <div class="slide-title">
+          <span class="main">04. Engineering Deep-Dive</span>
+          <span class="slide-sub">고려대학교 전공 심화 프로젝트 · 하부 시스템 최적화 · CS 역량 증명</span>
+        </div>
+        <div class="tags">
+          <span class="tag highlight">OpenCV</span>
+          <span class="tag">Flask</span>
+          <span class="tag highlight">R Language</span>
+          <span class="tag">caret / ranger</span>
+          <span class="tag">성능 프로파일링</span>
+          <span class="tag">C++ 복잡도 분석</span>
+        </div>
+      </div>
+
+      <div class="slide-body g-equal">
+        <!-- Card: Streaming Blur -->
+        <div class="card" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--surface);">
+          <div>
+            <div class="card-title" style="justify-content:space-between;">
+              <span style="display:flex; align-items:center; gap:5px;"><span class="mi sm">videocam</span> Streaming Face Privacy Filter</span>
+              <a href="https://github.com/sleepyhood/Capstone_Design" target="_blank" class="repo-link">
+                <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Capstone_Design</a>
+            </div>
+            <div style="font-size:12px; color:var(--ink-muted); margin-bottom:8px;">고려대학교 캡스톤 디자인 2 · 2인 팀 · 설계 및 구현 총괄 · 2023.09 ~ 2023.12</div>
+
+            <div class="s-body" style="font-size:12.5px; margin-bottom:8px;">
+              <b>난제:</b> OpenCV 얼굴 인식과 Google STT 음성 스트림을 동시에 처리하면서, 등록되지 않은 얼굴만 선택적으로 비식별화해야 했습니다.
+            </div>
+
+            <!-- Face Privacy Result Comparison -->
+            <div class="face-result-grid">
+              <figure class="face-result-card">
+                <img src="images/Streaming_Blur_Service_학습된얼굴출력.png" alt="등록된 얼굴은 원본을 유지하는 실시간 스트리밍 결과">
+                <figcaption>
+                  <b>등록된 얼굴</b>
+                  <span>원본 유지</span>
+                </figcaption>
+              </figure>
+              <figure class="face-result-card">
+                <img src="images/Streaming_Blur_Service_학습안된얼굴출력.png" alt="등록되지 않은 얼굴을 모자이크 처리하는 실시간 스트리밍 결과">
+                <figcaption>
+                  <b>등록되지 않은 얼굴</b>
+                  <span>선택적 모자이크</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <!-- 핵심 파이프라인 불릿 -->
+            <div class="s-body" style="font-size:12px; line-height:1.6;">
+              <div>• <b>스레드 분리:</b> 비디오 렌더링 루프와 STT 오디오 스트림을 독립 스레드로 분리</div>
+              <div>• <b>선택적 모자이크:</b> Haar+LBPH 기반으로 등록되지 않은 얼굴에만 가우시안 블러 적용</div>
+              <div>• <b>실시간 비속어 검열:</b> 음성 스트림에서 욕설을 감지하고 BEEP음으로 피드백</div>
+            </div>
+          </div>
+
+          <div class="stat-card" style="margin-top: 8px; background:var(--surface-subtle); padding:6px 12px;">
+            <div class="stat-meta">
+              <span class="stat-label">Privacy Rule</span>
+              <span class="stat-desc">얼굴 등록 여부에 따른 선택적 처리</span>
+            </div>
+            <span class="stat-val green">실시간 비식별화</span>
+          </div>
+        </div>
+
+        <!-- Card: Microbial + Algorithm -->
+        <div style="display:flex; flex-direction:column; justify-content:space-between; gap:12px;">
+          <!-- Microbial -->
+          <div class="card" style="flex:1; background:var(--surface); display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+              <div class="card-title" style="justify-content:space-between;">
+                <span style="display:flex; align-items:center; gap:5px;"><span class="mi sm">biotech</span>Microbial Classification</span>
+                <a href="https://github.com/sleepyhood/Microbial-based_disease_classification" target="_blank" class="repo-link">
+                  <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+              </div>
+              <div style="font-size:12px; color:var(--ink-muted); margin-bottom:6px;">고려대학교 데이터마이닝 수업 · 최우수 성적 · 2023.09 ~ 2023.12</div>
+
+              <!-- Mini Benchmark Image & Spec Grid -->
+              <div style="display:grid; grid-template-columns: 1fr 1.1fr; gap:10px; align-items:center; margin-bottom:6px;">
+                <div style="background:#ffffff; border:1px solid var(--border); border-radius:6px; overflow:hidden; padding:2px;">
+                  <img src="images/microbial_benchmark.png" alt="R ggplot2 기반 머신러닝 6종 모델 정확도 비교" style="width:100%; height:auto; display:block;">
+                </div>
+                <div class="s-body" style="font-size:11.8px; line-height:1.55;">
+                  <div>• <b>스택:</b> R, caret, ranger, tidyverse</div>
+                  <div>• <b>검증:</b> 10-Fold CV 6종 비교</div>
+                  <div>• <b>최고 모델:</b> <b>ranger (평균 88.1%)</b></div>
+                  <div>• <b>특징 추출:</b> 상위 100개 핵심 균주 도출</div>
+                </div>
+              </div>
+
+              <div class="s-body" style="font-size:11.8px; line-height:1.4; color:var(--ink-secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                3개 병원 유전체 코호트 정제 및 변수 중요도 분석을 주도하여 <b>수업 내 최우수 성적</b> 달성
+              </div>
+            </div>
+          </div>
+
+          <!-- Algorithm -->
+          <div class="card" style="flex:1; background:var(--surface);">
+            <div class="card-title">
+              <span class="mi sm">emoji_events</span>알고리즘 &amp; CS 탄탄한 기본기
+            </div>
+            <div class="s-body" style="font-size:12.8px; line-height:1.7;">
+              <div><b>Solved.ac:</b> C++ STL 재할당 비용, 캐시 지역성, 시간·공간 복잡도 실전 트레이닝</div>
+              <div><b>정보올림피아드 전임 지도:</b> KOI 및 NYPC 1라운드 기출 분석 · 교안 집필 · 학생 전담 지도</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-ft">
+        <span>고려대학교 전공 심화 · 캡스톤 디자인 · 데이터마이닝</span>
+        <span class="slide-ft-index">5 / 6</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         SLIDE 6 · External Experience & Certifications
+         ═══════════════════════════════════════════════ -->
+    <div class="slide">
+      <div class="slide-hd">
+        <div class="slide-title">
+          <span class="main">05. External Experience &amp; Certifications</span>
+          <span class="slide-sub">기술 전달력 · 클라우드 인프라 · 공인 자격 및 수상</span>
+        </div>
+        <div class="tags">
+          <span class="tag highlight">AWS Cloud</span>
+          <span class="tag highlight">FastAPI</span>
+          <span class="tag">Technical Writing</span>
+          <span class="tag">NYPC 교안 집필</span>
+          <span class="tag status">정규직 재직 중</span>
+          <a href="https://github.com/sleepyhood/250810-cloud-computing-public" target="_blank" class="repo-link">
+            <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>cloud-computing</a>
+          <a href="https://github.com/sleepyhood/250809_NYPC_1Round" target="_blank" class="repo-link">
+            <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>NYPC_1Round</a>
+        </div>
+      </div>
+
+      <div class="slide-body g-split" style="flex: 1;">
+        <div class="content-col" style="gap: 10px;">
+          <!-- AWS Lecture -->
+          <div class="card" style="flex: 1; background:var(--surface);">
+            <div class="card-title" style="justify-content:space-between;">
+              <span style="display:flex; align-items:center; gap:5px;"><span class="mi sm">cloud</span>AWS 강의 제작 (15주)</span>
+              <a href="https://github.com/sleepyhood/250810-cloud-computing-public" target="_blank" class="repo-link">GitHub 자료</a>
+            </div>
+            <div style="font-size:12px; color:var(--ink-muted); margin-bottom:5px;">두잉창의코딩-청라 외주 · 2025.07 ~ 2025.12</div>
+
+            <!-- 2026 Linear & Toss Style End-to-End Cloud Architecture SVG Frame -->
+            <div style="margin-bottom:7px; height:116px; max-height:116px; border-radius:6px; background:#0b0f17; border:1px solid rgba(255,255,255,0.12); box-shadow:0 3px 12px rgba(0,0,0,0.3); overflow:hidden;">
+              <svg viewBox="0 0 540 116" width="100%" height="116" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:116px;">
+              <defs>
+                <marker id="arr-sky" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                  <path d="M 0 0 L 6 3 L 0 6 z" fill="#38bdf8"/>
+                </marker>
+                <marker id="arr-gray" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                  <path d="M 0 0 L 6 3 L 0 6 z" fill="#64748b"/>
+                </marker>
+                <marker id="arr-amber" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                  <path d="M 0 0 L 6 3 L 0 6 z" fill="#fbbf24"/>
+                </marker>
+              </defs>
+
+              <!-- Header Bar -->
+              <circle cx="15" cy="14" r="3" fill="#10b981"/>
+              <text x="24" y="17" fill="#cbd5e1" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" letter-spacing="0.04em">END-TO-END CLOUD INFRASTRUCTURE</text>
+              <rect x="420" y="6" width="108" height="16" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+              <text x="474" y="17" fill="#94a3b8" font-size="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" text-anchor="middle">ap-northeast-2 (Seoul)</text>
+              <line x1="8" y1="25" x2="532" y2="25" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+              <!-- Client Box -->
+              <rect x="12" y="38" width="70" height="56" rx="4" fill="#131923" stroke="rgba(255,255,255,0.16)" stroke-width="0.8"/>
+              <text x="47" y="56" fill="#f8fafc" font-size="9.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" text-anchor="middle">Client</text>
+              <text x="47" y="70" fill="#94a3b8" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Web Browser</text>
+              <text x="47" y="82" fill="#38bdf8" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" text-anchor="middle">Swagger UI</text>
+
+              <!-- Client -> IGW Arrow -->
+              <line x1="82" y1="66" x2="112" y2="66" stroke="#38bdf8" stroke-width="1" marker-end="url(#arr-sky)"/>
+              <text x="97" y="60" fill="#38bdf8" font-size="7" font-family="Consolas, monospace" font-weight="700" text-anchor="middle">:8000</text>
+
+              <!-- Custom VPC Boundary -->
+              <rect x="114" y="30" width="416" height="78" rx="5" fill="rgba(15, 23, 42, 0.3)" stroke="#334155" stroke-width="0.8" stroke-dasharray="3,3"/>
+              <text x="122" y="101" fill="#475569" font-size="7" font-family="Consolas, monospace" font-weight="700" letter-spacing="0.02em">CUSTOM VPC (10.0.0.0/16)</text>
+
+              <!-- IGW -->
+              <rect x="118" y="52" width="34" height="28" rx="3" fill="#1e293b" stroke="#475569" stroke-width="0.8"/>
+              <text x="135" y="66" fill="#f1f5f9" font-size="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" text-anchor="middle">IGW</text>
+              <text x="135" y="75" fill="#94a3b8" font-size="6.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">Gateway</text>
+
+              <!-- IGW -> EC2 Arrow -->
+              <line x1="152" y1="66" x2="168" y2="66" stroke="#64748b" stroke-width="1" marker-end="url(#arr-gray)"/>
+
+              <!-- Public Subnet -->
+              <rect x="172" y="35" width="208" height="60" rx="4" fill="rgba(30, 41, 59, 0.4)" stroke="rgba(99, 102, 241, 0.4)" stroke-width="0.8"/>
+              <text x="180" y="45" fill="#a5b4fc" font-size="7" font-family="Consolas, monospace" font-weight="700">PUBLIC SUBNET (10.0.1.0/24)</text>
+
+              <!-- EC2 Instance + Docker Container -->
+              <rect x="178" y="49" width="196" height="42" rx="3" fill="#0f172a" stroke="rgba(34, 197, 94, 0.55)" stroke-width="0.8"/>
+              <text x="186" y="60.5" fill="#f8fafc" font-size="8.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700">EC2 (Ubuntu)</text>
+              <rect x="268" y="52" width="100" height="12" rx="2" fill="rgba(34, 197, 94, 0.15)" stroke="rgba(34, 197, 94, 0.35)" stroke-width="0.5"/>
+              <text x="318" y="61" fill="#4ade80" font-size="6.8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" text-anchor="middle">Docker: FastAPI Container</text>
+              <text x="186" y="73" fill="#cbd5e1" font-size="7.5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Uvicorn ASGI Server · Port 8000</text>
+              <text x="186" y="84.5" fill="#94a3b8" font-size="7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Pipeline: TfidfVectorizer + Sentiment Classifier</text>
+
+              <!-- S3 Bucket Card -->
+              <rect x="390" y="35" width="134" height="30" rx="3.5" fill="#0f172a" stroke="rgba(14, 165, 233, 0.5)" stroke-width="0.8"/>
+              <text x="398" y="47" fill="#38bdf8" font-size="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700">Amazon S3 (Bucket)</text>
+              <text x="398" y="58" fill="#cbd5e1" font-size="7" font-family="Consolas, monospace">best_model.pkl (IAM Role)</text>
+
+              <!-- Private Subnet (RDS) Card -->
+              <rect x="390" y="69" width="134" height="30" rx="3.5" fill="#0f172a" stroke="rgba(245, 158, 11, 0.5)" stroke-width="0.8"/>
+              <text x="398" y="81" fill="#fbbf24" font-size="8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700">Amazon RDS (MySQL)</text>
+              <text x="398" y="92" fill="#cbd5e1" font-size="7" font-family="Consolas, monospace">Private Subnet (10.0.2.0/24)</text>
+
+              <!-- EC2 -> S3 Arrow -->
+              <path d="M 374 60 L 382 60 L 382 50 L 388 50" fill="none" stroke="#38bdf8" stroke-width="0.8" stroke-dasharray="2,2" marker-end="url(#arr-sky)"/>
+
+              <!-- EC2 -> RDS Arrow -->
+              <path d="M 374 76 L 382 76 L 382 84 L 388 84" fill="none" stroke="#fbbf24" stroke-width="0.8" stroke-dasharray="2,2" marker-end="url(#arr-amber)"/>
+            </svg>
+            </div>
+
+            <div class="s-body" style="font-size: 12.3px; line-height: 1.65;">
+              <ul style="margin: 0; padding-left: 16px;">
+                <li>대학/기관 대상 AWS 클라우드 <b>15주차 실습 전 과정</b> 기획 · 스크립트 집필 · 녹화 완수</li>
+                <li><b>핵심 인프라:</b> VPC 서브넷 분리, Uvicorn + Nginx 컨테이너 기반 감성분석 추론 API 배포 실습</li>
+                <li><b>4단계 로드맵:</b> 기초 인프라(IAM·EC2·S3) ➔ 서버리스/CDN ➔ ML 서빙(FastAPI) ➔ 컨테이너 배포</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NYPC -->
+          <div class="card" style="background:var(--surface);">
+            <div class="card-title" style="justify-content:space-between;">
+              <span style="display:flex; align-items:center; gap:5px;"><span class="mi sm">menu_book</span>NYPC 1라운드 교안</span>
+              <a href="https://github.com/sleepyhood/250809_NYPC_1Round" target="_blank" class="repo-link">GitHub 교안</a>
+            </div>
+            <div style="font-size:12px; color:var(--ink-muted); margin-bottom:5px;">두잉창의코딩-청라 · 2025</div>
+            <div class="s-body" style="font-size:12.8px;">
+              넥슨 청소년 프로그래밍 챌린지(NYPC) 1라운드 기출 문제를 분석하고 알고리즘 접근법 해설서를 직접 집필. 자원 제약 환경에서의 코드 최적화 감각을 학생에게 직접 전수
+            </div>
+          </div>
+        </div>
+
+        <div class="content-col" style="gap: 10px;">
+          <!-- Certifications -->
+          <div class="card" style="flex:1; background:var(--surface);">
+            <div class="card-title">
+              <span class="mi sm">verified</span>공인 자격증 (Certifications)
+            </div>
+            <div style="margin-top:4px;">
+              <div class="cert-row">
+                <div class="cert-name">
+                  정보처리기사
+                  <span class="tag highlight" style="margin-left:4px;">필기 합격</span>
+                </div>
+                <div class="cert-date">한국산업인력공단 · 2026-09-09</div>
+              </div>
+              <div class="cert-row">
+                <div class="cert-name">SQL 개발자 (SQLD)</div>
+                <div class="cert-date">한국데이터산업진흥원 · 제51회 · 2023-12-15</div>
+              </div>
+              <div class="cert-row">
+                <div class="cert-name">데이터분석 준전문가 (ADsP)</div>
+                <div class="cert-date">한국데이터산업진흥원 · 제39회 · 2023-11-17</div>
+              </div>
+              <div class="cert-row">
+                <div class="cert-name">COS PRO (C++) 2급</div>
+                <div class="cert-date">YBMIT · 2022-03-18</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech Stack Summary -->
+          <div class="card" style="background:var(--surface);">
+            <div class="card-title">
+              <span class="mi sm">layers</span>종합 기술 스택 맵
+            </div>
+            <div style="font-size:12.3px; line-height:1.75; color:var(--ink-secondary);">
+              <div><b>Languages:</b> C++, Python, C#, JavaScript, C</div>
+              <div><b>Backend &amp; Auto:</b> GAS, Flask, FastAPI, Docker, Gemini API</div>
+              <div><b>Data &amp; Media:</b> MySQL, SQLite, Pandas, OpenCV, WebRTC, scikit-learn</div>
+              <div><b>Cloud &amp; DevOps:</b> AWS (EC2/S3/RDS/IAM/VPC), Git, Linux</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-banner" style="margin: 8px 0 0 0; text-align: center; border-left: 1px solid var(--border);">
+        <b>"감각에 의존하지 않고 숫자로 측정하며, 기술적 제약 속에서도 최선의 엔지니어링 타협점을 찾아냅니다."</b>
+      </div>
+
+      <div class="slide-ft">
+        <span>두잉창의코딩-청라 외주 · 정보처리기사 필기 합격 2026.09.09</span>
+        <span class="slide-ft-index">6 / 6</span>
+      </div>
+    </div>
+
+  </div><!-- /.slides-wrap -->
+
+  <!-- 키보드 슬라이드 네비게이션 -->
+  <script>
+    (function () {
+      function getSlides() {
+        return Array.from(document.querySelectorAll('.slides-wrap .slide'));
+      }
+
+      function getActiveSlideMid() {
+        const slides = getSlides();
+        const vpMid = window.scrollY + window.innerHeight / 2;
+        let closest = slides[0], minDist = Infinity;
+        slides.forEach(function (s) {
+          const rect = s.getBoundingClientRect();
+          const slideMid = window.scrollY + rect.top + rect.height / 2;
+          const d = Math.abs(slideMid - vpMid);
+          if (d < minDist) { minDist = d; closest = s; }
+        });
+        return closest;
+      }
+
+      function scrollToSlide(slide) {
+        if (!slide) return;
+        const top = window.scrollY + slide.getBoundingClientRect().top;
+        const targetY = top - (window.innerHeight - slide.offsetHeight) / 2;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+      }
+
+      document.addEventListener('keydown', function (e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        const slides = getSlides();
+        const current = getActiveSlideMid();
+        const idx = slides.indexOf(current);
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === 'PageDown') {
+          e.preventDefault();
+          if (idx < slides.length - 1) scrollToSlide(slides[idx + 1]);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp') {
+          e.preventDefault();
+          if (idx > 0) scrollToSlide(slides[idx - 1]);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
