@@ -110,6 +110,18 @@
         font-family: inherit;
       }
       .toolbar button:hover { background: #f4f4f5; transform: translateY(-1px); }
+      .toolbar .photo-optimize-control {
+        display: inline-flex; align-items: center; gap: 7px;
+        color: #d4d4d8; font-size: 12px; font-weight: 600;
+        white-space: nowrap; cursor: pointer;
+      }
+      .toolbar .photo-optimize-control input {
+        width: 15px; height: 15px; margin: 0;
+        accent-color: #60a5fa; cursor: pointer;
+      }
+      .toolbar .photo-optimize-control input:focus-visible {
+        outline: 2px solid #93c5fd; outline-offset: 3px; border-radius: 2px;
+      }
       .slides-wrap {
         display: flex; flex-direction: column; align-items: center;
         gap: 32px; padding: 72px 20px 80px;
@@ -746,6 +758,10 @@
   <div class="toolbar">
     <span>16:9 슬라이드 (1280 × 720)</span>
     <span class="tip">인쇄 설정: [여백: 없음], [배경 그래픽: 체크]</span>
+    <label class="photo-optimize-control" for="profile-photo-optimize">
+      <input id="profile-photo-optimize" type="checkbox">
+      PDF용 사진 최적화
+    </label>
     <button onclick="window.print()">
       <span class="mi sm">print</span> PDF 저장
     </button>
@@ -784,14 +800,14 @@
               <div>
                 <div class="exp-company">
                   두잉창의코딩-청라
-                  <span class="tag status" style="margin-left:4px;">2026.10.31 퇴사 예정</span>
+                  <span class="tag status" style="margin-left:4px;">2026.10.31 퇴사</span>
                 </div>
                 <div class="exp-role">
                   전임 강사 · 인하우스 시스템 개발 (정규직)<br>
                   <span style="font-size: 11.5px; color: var(--ink-muted);">알고리즘 지도(NYPC·KOI) · 사내 자동화 도구 개발 · AWS 강의 외주</span>
                 </div>
               </div>
-              <div class="exp-period">2024.04 ~ 2026.10<br><span style="font-size:11px;color:var(--ink-faint);">약 2년 7개월</span></div>
+              <div class="exp-period">2024.04 ~ 2026.10.31<br><span style="font-size:11px;color:var(--ink-faint);">약 2년 7개월</span></div>
             </div>
             <div class="exp-row">
               <div>
@@ -842,7 +858,7 @@
         <div style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 12px;">
           <div style="display:flex; justify-content:center;">
             <div class="profile-photo">
-              <img src="images/오승원.jpg" alt="오승원 프로필 사진">
+              <img id="profile-photo-image" src="images/오승원.jpg" data-original-src="images/오승원.jpg" data-optimized-src="images/오승원_pdf.jpg" alt="오승원 프로필 사진">
             </div>
           </div>
 
@@ -1415,7 +1431,7 @@
           <span class="tag highlight">FastAPI</span>
           <span class="tag">Technical Writing</span>
           <span class="tag">NYPC 교안 집필</span>
-          <span class="tag status">정규직 · 2026.10.31 퇴사 예정</span>
+          <span class="tag status">2024.04 ~ 2026.10.31</span>
           <a href="https://github.com/sleepyhood/250810-cloud-computing-public" target="_blank" class="repo-link">
             <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>cloud-computing</a>
           <a href="https://github.com/sleepyhood/250809_NYPC_1Round" target="_blank" class="repo-link">
@@ -1533,15 +1549,22 @@
           <!-- Certifications -->
           <div class="card" style="flex:1; background:var(--surface);">
             <div class="card-title">
-              <span class="mi sm">verified</span>공인 자격증 (Certifications)
+              <span class="mi sm">verified</span>공인 자격 및 학습 (Credentials &amp; Learning)
             </div>
             <div style="margin-top:4px;">
+              <div class="cert-row" style="align-items:flex-start;">
+                <div class="cert-name" style="flex:1;">
+                  Microsoft Office Specialist (MOS) - <span class="tag highlight" style="margin-left:4px;">Associate</span><br>
+                  <span style="display:block;margin-top:2px;font-size:11px;font-weight:500;color:var(--ink-muted);">Word · 2026.05.28 &nbsp;|&nbsp; Excel · 2026.05.26 &nbsp;|&nbsp; PowerPoint · 2026.05.29</span>
+                </div>
+                <div class="cert-date">Certiport · 2026.05.29</div>
+              </div>
               <div class="cert-row">
                 <div class="cert-name">
                   정보처리기사
-                  <span class="tag highlight" style="margin-left:4px;">필기 합격</span>
+                  <span class="tag highlight" style="margin-left:4px;">실기 결과 대기</span>
                 </div>
-                <div class="cert-date">한국산업인력공단 · 2026-09-09</div>
+                <div class="cert-date">필기 합격 · 2026.10.25 응시</div>
               </div>
               <div class="cert-row">
                 <div class="cert-name">SQL 개발자 (SQLD)</div>
@@ -1554,6 +1577,15 @@
               <div class="cert-row">
                 <div class="cert-name">COS PRO (C++) 2급</div>
                 <div class="cert-date">YBMIT · 2022-03-18</div>
+              </div>
+              <div class="cert-row" style="align-items:flex-start;">
+                <div class="cert-name" style="display:flex;align-items:flex-start;gap:5px;">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" style="color:#4285f4;margin:1px 0 0;flex-shrink:0;fill:currentColor;"><path d="M19.35 10.04A7.49 7.49 0 0 0 5.67 8.05 6 6 0 0 0 6 20h13a5 5 0 0 0 .35-9.96zM10.6 16.6 7.4 13.4l1.41-1.41 1.79 1.79 4.59-4.59 1.41 1.41-6 6z"/></svg>
+                  <span>Google Cloud Study Jam 2026 상반기 (H1)
+                    <span style="display:block;margin-top:2px;font-size:11px;font-weight:500;color:var(--ink-muted);">수료 폼 제출 · Google Skills 공개 프로필</span>
+                  </span>
+                </div>
+                <a href="https://www.skills.google/public_profiles/cec65a9d-c33b-4b56-82d2-4a9476ac7dfb" target="_blank" rel="noopener noreferrer" class="repo-link">배지 보기</a>
               </div>
             </div>
           </div>
@@ -1578,8 +1610,7 @@
       </div>
 
       <div class="slide-ft">
-        <span>두잉창의코딩-청라 외주 · 정보처리기사 필기 합격 2026.09.09</span>
-        <span class="slide-ft-index">6 / 6</span>
+        <span class="slide-ft-index" style="margin-left:auto;">6 / 6</span>
       </div>
     </div>
 
@@ -1588,6 +1619,17 @@
   <!-- 키보드 슬라이드 네비게이션 -->
   <script>
     (function () {
+      const profilePhotoToggle = document.getElementById('profile-photo-optimize');
+      const profilePhotoImage = document.getElementById('profile-photo-image');
+      if (profilePhotoToggle && profilePhotoImage) {
+        profilePhotoToggle.addEventListener('change', function () {
+          const nextSrc = profilePhotoToggle.checked
+            ? profilePhotoImage.dataset.optimizedSrc
+            : profilePhotoImage.dataset.originalSrc;
+          if (nextSrc) profilePhotoImage.src = nextSrc;
+        });
+      }
+
       function getSlides() {
         return Array.from(document.querySelectorAll('.slides-wrap .slide'));
       }
