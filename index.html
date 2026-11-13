@@ -899,7 +899,7 @@
           <span class="tag">REST API</span>
           <span class="tag">MySQL</span>
           <span class="tag">SQLite</span>
-          <span class="tag status">프로덕션 운영 중</span>
+          <span class="tag status">재직 중 개발·활용</span>
           <a href="https://github.com/sleepyhood/learning-tracker-showcase" target="_blank" class="repo-link">
             <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub Repository</a>
         </div>
@@ -909,24 +909,24 @@
       <div class="stat-strip">
         <div class="stat-card">
           <div class="stat-meta">
-            <span class="stat-label">Data Accuracy</span>
-            <span class="stat-desc">수작업 파싱 오류 방지</span>
+            <span class="stat-label">Data Handling</span>
+            <span class="stat-desc">스키마 변경 대응</span>
           </div>
-          <span class="stat-val green">100%</span>
+          <span class="stat-val green">결측치 처리</span>
         </div>
         <div class="stat-card">
           <div class="stat-meta">
             <span class="stat-label">Coverage</span>
             <span class="stat-desc">원생 진도·숙제 통합</span>
           </div>
-          <span class="stat-val">수백 명 규모</span>
+          <span class="stat-val">진도·과제 통합</span>
         </div>
         <div class="stat-card">
           <div class="stat-meta">
             <span class="stat-label">Adoption</span>
-            <span class="stat-desc">원내 강사진 실무 활용</span>
+            <span class="stat-desc">재직 중 활용</span>
           </div>
-          <span class="stat-val accent">전면 도입</span>
+          <span class="stat-val accent">업무에 적용</span>
         </div>
       </div>
 
@@ -953,14 +953,14 @@
               <div class="wf-arrow">→</div>
               <div class="wf-step" style="border-color:var(--accent-border); background:var(--accent-subtle);">
                 <div class="wf-step-title" style="color:var(--accent-text);">대시보드 UI</div>
-                <div class="wf-step-sub">실시간 진도 모니터링</div>
+                <div class="wf-step-sub">진도 현황 확인</div>
               </div>
             </div>
 
             <div class="s-block">
               <div class="s-label"><span class="mi sm">error</span> 배경 및 난제 (Challenge)</div>
               <div class="s-body">
-                외부 플랫폼에 분산된 수백 명의 진도율과 과제 데이터를 엑셀로 일일이 취합하던 중, 비정형 웹 JSON 스키마 변동으로 인한 파싱 누락 및 데이터 오염이 빈번히 발생했습니다.
+                외부 플랫폼에 분산된 진도율과 과제 데이터를 엑셀로 취합하는 과정에서, 웹 JSON 스키마 변경으로 파싱 누락과 데이터 불일치가 발생할 수 있었습니다.
               </div>
             </div>
 
@@ -969,8 +969,8 @@
               <div class="s-body">
                 <ul>
                   <li><b>파이프라인 구축:</b> Flask REST API를 설계해 비정형 웹 데이터를 규격화하고 DB 정규화 테이블에 적재</li>
-                  <li><b>테스트 주도 무결성 검증:</b> 스키마 변경 시 발생할 수 있는 결측치와 엣지 케이스를 방어하는 <b>단위 테스트 코드를 직접 작성</b>하여 100% 데이터 정합성 보장</li>
-                  <li><b>주간 대시보드:</b> 학생별 주간 학습 진도율 시각화 및 숙제 달성도 실시간 모니터링 UI 구축</li>
+                  <li><b>데이터 검증:</b> 스키마 변경 시 발생할 수 있는 결측치와 예외 상황을 처리하고, 매핑 결과를 확인하는 로직 구성</li>
+                  <li><b>주간 대시보드:</b> 학생별 주간 학습 진도율과 숙제 달성도를 확인하는 UI 구축</li>
                 </ul>
               </div>
             </div>
@@ -978,7 +978,7 @@
 
           <div class="card" style="padding: 10px 14px; background:var(--surface);">
             <div class="s-body" style="font-size: 12.5px;">
-              <b>현장 임팩트:</b> 수작업 집계 병목을 완전히 제거하여 강사진의 주간 관리 업무를 자동화하고, 학부모 상담 시 실시간 정량 지표 제공
+              <b>활용 방식:</b> 분산된 학습 데이터를 한 화면에 모아 주간 진도 관리와 상담 시 확인에 활용
             </div>
           </div>
         </div>
@@ -992,29 +992,14 @@
               <div class="window-dot"></div>
             </div>
             <span class="window-title">learning-tracker-dashboard.app</span>
-            <span style="font-size:10.5px; color:var(--green-accent); font-weight:600;">● Live 1.3ms</span>
+            <span style="font-size:10.5px; color:var(--green-accent); font-weight:600;">진도율 대시보드</span>
           </div>
           <div class="window-body">
             <img src="images/learning_tracker_dashboard.png" alt="학습 진도율 시각화 대시보드" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'500\' height=\'320\' viewBox=\'0 0 500 320\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23fafafa\'/><text x=\'50%25\' y=\'45%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%2371717a\' font-size=\'14\' font-weight=\'bold\' font-family=\'sans-serif\'>진도율 대시보드 UI (와이드 뷰)</text><text x=\'50%25\' y=\'56%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23a1a1aa\' font-size=\'11\' font-family=\'sans-serif\'>images/learning_tracker_dashboard.png</text></svg>';">
-
-            <!-- Terminal PiP Overlay (실제 콘솔 검증 증적 캡처) -->
-            <div class="terminal-pip">
-              <div class="terminal-pip-header">
-                <span class="terminal-pip-title">cmd.exe — python verify_benchmark.py</span>
-                <span style="display:flex;gap:3.5px;"><span style="width:6px;height:6px;border-radius:50%;background:#ef4444;"></span><span style="width:6px;height:6px;border-radius:50%;background:#eab308;"></span><span style="width:6px;height:6px;border-radius:50%;background:#22c55e;"></span></span>
-              </div>
-              <div class="terminal-pip-body">
-                <img src="images/terminal_benchmark.png" alt="실제 콘솔 검증 증적" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'360\' height=\'200\' viewBox=\'0 0 360 200\'><rect width=\'100%25\' height=\'100%25\' fill=\'%2318181b\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%234ade80\' font-size=\'12\' font-family=\'monospace\'>images/terminal_benchmark.png</text></svg>';">
-              </div>
-              <div class="terminal-pip-footer">
-                <span>✓ 32 passed (0.38s)</span>
-                <span>Latency: 0.31ms (11,109x↑)</span>
-              </div>
-            </div>
           </div>
           <div class="window-footer">
             <span>Flask 기반 진도율 대시보드 메인 화면</span>
-            <b>단위 테스트 &amp; 6중 매핑 엔진 검증 완료</b>
+            <b>학습 데이터 통합 화면</b>
           </div>
         </div>
       </div>
@@ -1031,14 +1016,14 @@
     <div class="slide">
       <div class="slide-hd">
         <div class="slide-title">
-          <span class="main">02. Gemini 기반 실시간 AI 알림장 자동화 사이드바</span>
+          <span class="main">02. Gemini 기반 AI 알림장 작성 보조 사이드바</span>
           <span class="slide-sub">두잉창의코딩-청라 · 인하우스 서비스 개발 · 2025.07 ~ 2026.10</span>
         </div>
         <div class="tags">
           <span class="tag highlight">Google Apps Script</span>
           <span class="tag highlight">Gemini 2.5 API</span>
           <span class="tag">CacheService</span>
-          <span class="tag status">실무 전원 사용</span>
+          <span class="tag status">재직 중 업무 활용</span>
           <a href="https://github.com/sleepyhood/smart-docs-sidebar" target="_blank" class="repo-link">
             <svg class="gh-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub Repository</a>
         </div>
@@ -1048,24 +1033,24 @@
       <div class="stat-strip">
         <div class="stat-card">
           <div class="stat-meta">
-            <span class="stat-label">Time Reduced</span>
-            <span class="stat-desc">피드백 작성 소요 시간</span>
+            <span class="stat-label">Workflow</span>
+            <span class="stat-desc">출결·수업 정보 취합</span>
           </div>
-          <span class="stat-val accent">40분 → 3분 (92%↓)</span>
+          <span class="stat-val accent">작성 과정 보조</span>
         </div>
         <div class="stat-card">
           <div class="stat-meta">
-            <span class="stat-label">Cache Speed</span>
-            <span class="stat-desc">출석부 40명 동기화</span>
+            <span class="stat-label">Caching</span>
+            <span class="stat-desc">포털 API 중복 호출 완화</span>
           </div>
-          <span class="stat-val green">1초</span>
+          <span class="stat-val green">15분 캐싱</span>
         </div>
         <div class="stat-card">
           <div class="stat-meta">
             <span class="stat-label">Generation</span>
             <span class="stat-desc">Gemini 2.5 맞춤 문안</span>
           </div>
-          <span class="stat-val">즉시 생성 (1s)</span>
+          <span class="stat-val">초안 생성</span>
         </div>
       </div>
 
@@ -1082,7 +1067,7 @@
               <div class="wf-arrow">→</div>
               <div class="wf-step" style="border-color:var(--border-focus);">
                 <div class="wf-step-title">CacheService</div>
-                <div class="wf-step-sub">15분 캐싱 (1s 로드)</div>
+                <div class="wf-step-sub">15분 캐싱</div>
               </div>
               <div class="wf-arrow">→</div>
               <div class="wf-step">
@@ -1092,14 +1077,14 @@
               <div class="wf-arrow">→</div>
               <div class="wf-step" style="border-color:var(--accent-border); background:var(--accent-subtle);">
                 <div class="wf-step-title" style="color:var(--accent-text);">구글 문서</div>
-                <div class="wf-step-sub">원클릭 피드백 완성</div>
+                <div class="wf-step-sub">검토 후 문안 작성</div>
               </div>
             </div>
 
             <div class="s-block">
               <div class="s-label"><span class="mi sm">error</span> 배경 및 현장 병목 (Bottleneck)</div>
               <div class="s-body">
-                수업 종료 직후 매번 40여 명의 출결 확인, 수업 일지 타이핑, 개별 맞춤 알림장 작성에 강사진의 40분 이상이 반복 수작업으로 소모되어 퇴근 지연 및 오타 위험이 컸습니다.
+                수업 후 출결 확인과 수업 일지 정리, 학생별 알림장 작성에 반복 작업이 필요했습니다.
               </div>
             </div>
 
@@ -1107,9 +1092,9 @@
               <div class="s-label"><span class="mi sm">terminal</span> 핵심 아키텍처 구현 (Implementation)</div>
               <div class="s-body">
                 <ul>
-                  <li><b>15분 스마트 캐싱 레이어:</b> Google Apps Script의 <code>CacheService</code>를 활용해 중복 포탈 API 호출 부하를 차단하고 40명 출석부를 <b>1초 만에 즉시 로드</b></li>
-                  <li><b>Gemini 2.5 LLM 프롬프트 파이프라인:</b> 스크래치, 교재, 알고리즘(OJ) 등 3대 커리큘럼 성취도 데이터를 JSON 파이프라인으로 구조화하여 <b>학생별 알림장 문안을 1초 만에 자동 생성</b></li>
-                  <li><b>보안 격리 설계:</b> Script Properties 기반 환경변수 분리로 API Key 등 시크릿 자격증명을 완전 격리</li>
+                  <li><b>15분 캐싱:</b> Google Apps Script의 <code>CacheService</code>를 활용해 포털 API 중복 호출을 줄이도록 구성</li>
+                  <li><b>Gemini 2.5 프롬프트 파이프라인:</b> 스크래치, 교재, 알고리즘(OJ) 등 커리큘럼 정보를 구조화해 학생별 알림장 초안 작성 지원</li>
+                  <li><b>자격증명 관리:</b> API 키를 코드에 직접 넣지 않고 Script Properties로 분리</li>
                 </ul>
               </div>
             </div>
@@ -1117,7 +1102,7 @@
 
           <div class="card" style="padding: 10px 14px; background:var(--surface);">
             <div class="s-body" style="font-size: 12.5px;">
-              <b>운영 결과:</b> 현장 강사진 전원 실무 도입 완료. 수업 종료 후 <b>3분 만에 40명 피드백 발송 완료</b> 및 오발송 오차율 0% 달성
+              <b>업무 활용:</b> 재직 중 출결·수업 정보를 불러와 알림장 초안을 작성하는 과정에 활용. 문안은 발송 전 강사가 검토
             </div>
           </div>
         </div>
@@ -1133,59 +1118,20 @@
                 <div class="window-dot"></div>
               </div>
               <span class="window-title">Google Docs Sidebar · Smart Attendance</span>
-              <span style="font-size:10.5px; color:var(--green-accent); font-weight:600;">● Active 15m Cache</span>
+              <span style="font-size:10.5px; color:var(--green-accent); font-weight:600;">15분 캐싱 구성</span>
             </div>
             <div class="window-body" style="padding: 4px; background:#ffffff;">
               <img src="images/smart_docs_sidebar.png" alt="구글 문서 AI 알림장 사이드바" style="max-height: 290px; width:auto;" onerror="this.onerror=null; this.parentNode.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:#71717a;font-size:12px;text-align:center;gap:6px;padding:20px;\'><svg width=\'48\' height=\'48\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1.5\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><line x1=\'15\' y1=\'3\' x2=\'15\' y2=\'21\'/></svg><b>AI 알림장 사이드바 UI</b><span style=\'font-size:11px;color:#a1a1aa;\'>images/smart_docs_sidebar.png</span></div>';">
             </div>
             <div class="window-footer">
               <span>Google Workspace 확장 도구</span>
-              <b>40명 출석부 &amp; 3대 커리큘럼 연동</b>
+              <b>출결·커리큘럼 정보 연동</b>
             </div>
           </div>
 
-          <!-- 2026 Linear & Toss Style Network Inspector (PortalService.js 팩트 반영) -->
-          <div class="timing-inspector">
-            <div class="timing-inspector-header">
-              <div class="timing-header-left">
-                <span class="timing-pulse-dot"></span>
-                <span>NETWORK INSPECTOR</span>
-                <span style="color:#64748b; font-weight:400;">· PortalService.js</span>
-              </div>
-              <span class="timing-hit-badge">CACHE HIT 96.2%</span>
-            </div>
-            <div class="timing-row">
-              <span class="timing-label">Direct Fetch (Miss)</span>
-              <div class="timing-bar-wrap" title="TLS: 130ms | TTFB: 2,120ms | Transfer: 200ms">
-                <div class="timing-seg seg-tls" style="width: 5.3%;"></div>
-                <div class="timing-seg seg-ttfb" style="width: 86.5%;"></div>
-                <div class="timing-seg seg-dl" style="width: 8.2%;"></div>
-              </div>
-              <span class="timing-val slow">2,450 ms</span>
-            </div>
-            <div class="timing-row">
-              <span class="timing-label">Memory Cache (Hit)</span>
-              <div class="timing-bar-wrap" title="Cache Read: 38ms">
-                <div class="timing-seg seg-hit"></div>
-              </div>
-              <span class="timing-val fast">38 ms</span>
-            </div>
-            <div class="timing-metrics">
-              <div class="timing-metric-row">
-                <span class="timing-metric-key">Latency Optimization</span>
-                <div class="timing-metric-val-group">
-                  <span style="color:#f1f5f9; font-weight:700;">-2,412ms</span>
-                  <span class="timing-pill green">98.4% Faster</span>
-                </div>
-              </div>
-              <div class="timing-metric-row">
-                <span class="timing-metric-key">Dual-Key Failover</span>
-                <div class="timing-metric-val-group">
-                  <span style="color:#38bdf8; font-weight:700;">0.1s Zero-Wait</span>
-                  <span class="timing-pill blue">429 Defense</span>
-                </div>
-              </div>
-            </div>
+          <div class="card" style="margin-top:10px; padding:12px 14px; background:var(--surface);">
+            <div class="s-label"><span class="mi sm">account_tree</span> 알림장 작성 흐름</div>
+            <div class="s-body" style="font-size:12px;">출결·커리큘럼 정보 조회 → 중복 API 호출 완화 → Gemini 문안 초안 생성 → 강사 검토</div>
           </div>
         </div>
       </div>
@@ -1202,7 +1148,7 @@
     <div class="slide">
       <div class="slide-hd">
         <div class="slide-title">
-          <span class="main">03. Scratch2 AST 자동 채점 엔진 &amp; 모의고사 환경 구축</span>
+          <span class="main">03. Scratch 프로젝트 자동 채점 도구 &amp; 모의고사 환경 구축</span>
           <span class="slide-sub">두잉창의코딩-청라 · 인하우스 서비스 개발 · 2025.07 ~ 2026.10</span>
         </div>
         <div class="tags">
@@ -1220,24 +1166,24 @@
       <div class="stat-strip">
         <div class="stat-card">
           <div class="stat-meta">
-            <span class="stat-label">Grading Time</span>
-            <span class="stat-desc">수백 명 수동 채점</span>
+            <span class="stat-label">Grading</span>
+            <span class="stat-desc">반복 채점 작업 지원</span>
           </div>
-          <span class="stat-val green">0초 자동화</span>
+          <span class="stat-val green">자동 판별</span>
         </div>
         <div class="stat-card">
           <div class="stat-meta">
-            <span class="stat-label">Consistency</span>
-            <span class="stat-desc">정적 분석 판별 정확도</span>
+            <span class="stat-label">Rules</span>
+            <span class="stat-desc">문항별 채점 기준</span>
           </div>
-          <span class="stat-val green">100%</span>
+          <span class="stat-val green">규칙 기반</span>
         </div>
         <div class="stat-card">
           <div class="stat-meta">
             <span class="stat-label">Scale</span>
-            <span class="stat-desc">학원 정기 평가 운영</span>
+            <span class="stat-desc">재직 중 모의고사 활용</span>
           </div>
-          <span class="stat-val accent">전면 도입</span>
+          <span class="stat-val accent">평가에 활용</span>
         </div>
       </div>
 
@@ -1247,7 +1193,7 @@
             <div class="s-block">
               <div class="s-label"><span class="mi sm">error</span> 직면한 문제 (Problem)</div>
               <div class="s-body">
-                수백 명 학생의 블록 코딩 과제를 강사가 Scratch 환경을 일일이 실행하며 수동 채점하는 극심한 병목 발생. 과제 유형별 기준이 모호해 채점 오차와 일관성 부재 문제가 이어졌습니다.
+                학생별 Scratch 과제를 강사가 직접 열어 확인하고 채점하는 과정에서 시간이 들고, 문항별 채점 기준을 일정하게 적용하기 어려웠습니다.
               </div>
             </div>
 
@@ -1255,10 +1201,10 @@
               <div class="s-label"><span class="mi sm">terminal</span> 핵심 기술 구현 (Action)</div>
               <div class="s-body">
                 <ul>
-                  <li><b>JSON 파싱 레이어:</b> Scratch2 프로젝트 파일(.sb3) ZIP 압축 해제 후 생성되는 복잡한 중첩 JSON 트리를 파싱</li>
-                  <li><b>AST 구성 및 순회:</b> 블록 간 연결 관계(이벤트 핸들러 → 제어 흐름 → 연산자)를 <b>추상 구문 트리(AST)</b> 형태로 재구성해 DFS 순회</li>
-                  <li><b>정적 검증 엔진:</b> 런타임 실행 없이 AST 순회만으로 이벤트 트리거, 조건문 분기, 변수 연산을 판별하는 정적 검증 엔진을 구현해 <b>100% 채점 일관성을 확보</b></li>
-                  <li><b>모의고사 환경:</b> 시험지 JSON 정의 파일 기준으로 학생 제출 코드를 자동 채점하여 결과 리포트(HTML) 즉시 생성</li>
+                  <li><b>JSON 파싱 레이어:</b> Scratch 3 프로젝트 파일(.sb3)의 ZIP 압축을 풀어 내부 JSON의 블록 데이터를 파싱</li>
+                  <li><b>블록 연결 분석:</b> 이벤트, 제어, 연산 블록의 연결 관계를 따라가며 제출 코드의 구조를 확인</li>
+                  <li><b>규칙 기반 검증:</b> 프로젝트를 실행하지 않고 문항별로 정의한 블록 구조와 조건을 검사해 채점 결과 생성</li>
+                  <li><b>모의고사 환경:</b> 시험지 JSON 정의 파일 기준으로 학생 제출물을 채점하고 결과 리포트(HTML) 생성</li>
                 </ul>
               </div>
             </div>
@@ -1266,7 +1212,7 @@
 
           <div class="card" style="padding: 10px 14px; background:var(--surface);">
             <div class="s-body" style="font-size: 12.5px;">
-              <b>운영 결과:</b> 학원 자체 교재와 연계한 정기 모의고사 채점에 전면 도입. 강사 채점 소요 시간 0 달성 및 채점 일관성 100% 보장
+              <b>활용 방식:</b> 재직 중 학원 자체 교재와 연계한 모의고사 채점에 활용. 정의한 규칙에 따른 판별 결과를 강사가 확인
             </div>
           </div>
         </div>
@@ -1286,8 +1232,8 @@
             <img src="images/scratch_ast_structure.svg" alt="Scratch 채점 결과">
           </div>
           <div class="window-footer">
-            <span>Scratch JSON AST 트리 구조 분석도</span>
-            <b>정적 분석 엔진</b>
+            <span>Scratch 블록 연결 구조 분석도</span>
+            <b>규칙 기반 채점</b>
           </div>
         </div>
       </div>
